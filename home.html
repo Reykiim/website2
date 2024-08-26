@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Acme:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" />
+    
+</head>
+<body>
+    <div class="desktop-1">
+        <div class="frame-child">
+            <img class="tj-aqua-gro-1" alt="" src="../static/src/Logo.png">
+            <button class="getstarted" id="getstarted">Getstarted</button> <!-- Added ID for JavaScript -->
+            <button class="menu-button home">Home</button>
+            <button class="menu-button services" id="services">Services</button> <!-- Tambahkan ID 'services' -->
+
+            <div class="contact">
+            <button class="menu-button">Contact</button>
+            <div class="dropdown">
+                <a href="https://wa.me/6281324912752" target="_blank">WhatsApp</a>
+                <a href="mailto:reykim11@gmail.com" target="_blank">Email</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="desktop-1-child"></div>
+        <div class="frame-about">
+            
+            <div class="framedeskripsi">
+                <div class="empowering-agriculture">
+                    <span class="empowering-agriculture-txt-container">
+                        <span>E</span>
+                        <span class="mpowering-agriculture">mpowering Agriculture</span>
+                    </span>
+                </div>
+                <div class="inovation">
+                    <span class="inovation-txt">
+                        <span>I</span>
+                        <span class="mpowering-agriculture">novation</span>
+                    </span>
+                </div>
+                <div class="with-integrated-aquaponic-container">
+                    <span class="empowering-agriculture-txt-container">
+                        <span>W</span>
+                        <span class="ith-integrated-aquaponic">ith Integrated Aquaponic</span>
+                    </span>
+                </div>
+                <div class="with-years-of">
+                    With years of experience in IoT technology, we have crafted solutions that enable urban farmers and plant enthusiasts to effortlessly manage their farming systems, including monitoring and caring for their fish ecosystems, even from a distance.
+                </div>
+            </div>
+            <div class="frame-about-child"></div>
+            <img class="model3icon" alt="" src="../static/src/model3.png">
+            <img class="model4icon" alt="" src="../static/src/model4.png">
+        </div>
+        <div class="frameourservice">
+            <div class="our-services">Our Services</div>
+            <div class="with-years-of1">
+                With years of experience in IoT technology, we have crafted solutions that enable urban farmers and plant enthusiasts to effortlessly manage their farming systems, including monitoring and caring for their fish ecosystems, even from a distance.
+            </div>
+        </div>
+        <div class="desktop-1-item">
+        </div>
+        <div class="desktop-1-inner">
+        </div>
+        <div class="rectangle-div">
+        </div>
+        <div class="desktop-1-child1">
+        </div>
+        <div class="desktop-1-child2">
+        </div>
+        <div class="desktop-1-child3">
+        </div>
+        <div class="desktop-1-child4">
+        </div>
+        <div class="desktop-1-child5">
+        </div>
+        <div class="desktop-1-child6">
+        </div>
+        <img class="primer-utama-1-icon" alt="" src="../static/src/Telu.png">
+        <div class="line-div"></div>
+        <img class="firebase-logo-1-icon" alt="" src="../static/src/Firebase.png">
+        <img class="espressif-logosvg-1-icon" alt="" src="../static/src/Espressif.png">
+        <img class="esp" alt="" src="../static/src/esp.png">
+        <img class="icon" alt="" src="../static/src/11.png">
+        <img class="icon1" alt="" src="../static/src/31.png">
+        <img class="icon2" alt="" src="../static/src/21.png">
+        <img class="model-4-2-icon" alt="" src="../static/src/model4.png">
+    <img class="model-3-2-icon" alt="" src="../static/src/model3.png">
+    <img class="untitled-design-1-removebg-pr-icon" alt="" src="../static/src/Untitled_design_1_-removebg-preview.png">
+    <img class="screenshot-2024-08-12-at-0237" alt="" src="../static/src/Screenshot 2024-08-12 at 01.48.27.png">
+    <div class="servisiot">IOT Development</div>
+    <div class="sevismonitoring">Monitoring System</div>
+    <div class="sevisaqua">Aquaponic Development</div>
+    <div class="deskripsiiot">Seamlessly integrate your systems with the powerful ESP32 microcontroller, enabling wireless connectivity and advanced automation in your IoT projects.</div>
+    <div class="deskripsimonitoring">Monitor and track the performance of your IoT devices in real-time, with comprehensive historical data analysis to optimize system efficiency and detect potential issues early.</div>
+    <div class="deskripsimonitoring1">Design and develop custom aquaponic systems that integrate seamlessly with IoT technology, ensuring optimal growth conditions for both plants and fish, while providing real-time monitoring and automation capabilities.</div>
+</div>
+<script>
+    // Get all menu buttons
+    const buttons = document.querySelectorAll('.menu-button');
+
+    // Add click event listener to each button
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add 'active' class to the clicked button
+            button.classList.add('active');
+        });
+    });
+
+    // Get 'Getstarted' button
+    const getStartedButton = document.getElementById('getstarted');
+    // URL for Flask
+    const signupUrl = "{{ url_for('signup') }}"; // Ensure Flask renders this correctly
+
+    // Add click event listener to 'Getstarted' button
+    getStartedButton.addEventListener('click', () => {
+        window.location.href = signupUrl;
+    });
+
+    // Get 'Services' button
+    const servicesButton = document.getElementById('services');
+    // Get the target element for scrolling
+    const serviceSection = document.querySelector('.frameourservice');
+
+    // Add click event listener to 'Services' button
+    servicesButton.addEventListener('click', () => {
+        // Scroll to the target section
+        serviceSection.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+
+
+</body>
+</html>

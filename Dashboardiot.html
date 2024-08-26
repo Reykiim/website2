@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../static/css/Dashboard.css" />
+    <link rel="stylesheet" href="../static/css/widget.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap" />
+</head>
+<body>
+    <div class="dashboard">
+        <div class="frame-tengahj-parent">
+            <div class="frame-tengahj-icon">
+                <div class="charthidro">
+                    <button class="akuainsight" onclick="showImage('../static/src/insight2.png')">Aquaponic</button>
+                    <button class="hidroinsight" onclick="showImage('../static/src/insight1.png')">Hydroponic</button>
+                    <img id="displayImage" src="" alt="Selected Image" style="display: none; margin-top: 20px;">
+                </div>
+                <!-- BRIGHT -->
+                <img class="elipsBright" alt="" src="../static/src/Elips.png">
+                <div class="buletBright"></div>
+                <div class="kotak" id="kotak">
+                    <div class="widget" id="widget">
+                        <div class="icon" id="icon"></div>
+                    </div>
+                </div>
+                
+                <!-- BRIGHT -->
+
+                <!-- TDS -->
+                <div class="buletTds">
+                </div>
+                <img class="elipstds" alt="" src="../static/src/Elips.png">
+                <div class="tdsmeter">
+                    <div class="traffic-light" id="traffic-light">
+                        <div class="light" id="green-light"></div>
+                        <div class="light" id="yellow-light"></div>
+                        <div class="light" id="red-light"></div>
+                    </div>
+                    <p id="turbidity-status-text">Loading...</p> <!-- Updated ID -->
+                    
+                </div>
+                <!-- TDS -->
+
+                <!-- PH -->
+                <div class="buletPh"></div>
+                <img class="elipsPh" alt="" src="../static/src/Elips.png">
+                <div class="phmeter">
+                    <div id="myDiv">
+                    </div>
+                </div>
+                <!-- PH -->
+            </div>
+            
+            <div class="frame-atas">
+                <div class="boxaquakultur">
+                    <div class="KualitasAqua" id="overall-quality-aqua"> </div>
+                </div>
+                <div class="boxhidroponic">
+                    <div class="Kualitas" id="overall-quality-hidro"> </div>
+                </div>
+                <div class="aquakultur">Aquakultur</div>
+                <div class="hidroponic">Hidroponic</div>
+                <button class="boxkeluar" id="boxkeluar" type="submit">Home</button>
+                    
+                
+            </div>
+        
+            <div class="framebawah">
+                <div class="chartaqua">
+                    <img class="Telu" alt="" src="../static/src/Telu.png">
+                </div>
+                <div class="Boxbiru">
+
+                    <!-- TDS Bawah -->
+                    <div class="buletTDSBawah"></div>
+                    <img class="elipsTDSBawah" alt="" src="../static/src/Elips2.png">
+                    <div class="boxTDSBawah">
+                        <div class="progress-container">
+                            <div id="progress-bar"></div>
+                        </div>
+                        <p id="tds-status-text">Loading...</p> <!-- Updated ID -->
+                    <div id="TDS-text" > </div>
+                    </div>
+                    <!-- TDS Bawah -->
+
+                    <!-- Ultra -->
+                    <div class="buletUltra"></div>
+                    <img class="elipsUltra" alt="" src="../static/src/Ellips3.png">
+                    <div class="boxultrasonic">
+                        <div class="content">
+                            <div id="frame">
+                                <div id="wave"></div>
+                            </div>
+                            <div id="num">50%</div>
+                            <div id="message"></div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Ultra -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="framenavbar">
+            <img class="menurectangle-icon">
+            <img class="rectangle-icon-atas" alt="" src="../static/src/Rectangleatas.png">
+            <img class="framenavbar-item" alt="" src="../static/src/Rectangle5.png">
+            <div class="monitoring-system">Monitoring System</div>
+            <img class="tj-aqua-gro-1" alt="" src="../static/src/TJAQUAGRO1.png">
+            <div class="kotakdashboard">
+                <div class="dashboard1">Dashboard</div>
+            </div>
+            <div class="kotakhistory">
+                <div class="history">History</div>
+            </div>
+            <div class="kotakhid" onclick="window.location.href='/hidroponic'">
+                <div class="hidro">Hidro</div>
+            </div>
+            
+            <div class="kotakaqua">
+                <div class="aqua">Aqua</div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/Js/scriptwidget.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".kotakhid");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "/hidroponic";
+    });
+});
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".aqua");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "aquaponic";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".kotakhistory");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "tampilan";
+    });
+});
+
+function showImage(imagePath) {
+    var image = document.getElementById('displayImage');
+    image.src = imagePath;
+    image.style.display = 'block';
+}
+
+document.getElementById('boxkeluar').addEventListener('click', function() {
+            window.location.href = "{{ url_for('home') }}";
+        });
+
+
+
+    </script>
+</body>
+</html>

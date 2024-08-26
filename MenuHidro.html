@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <script src="../static/Js/scriptwidget.js"></script>
+    
+    <link rel="stylesheet" href="../static/css/MenuHidro.css" />
+    <link rel="stylesheet" href="../static/css/ChartHistoryHidro.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Semi Condensed:wght@500;600;700;800&display=swap" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div class="dashboard">
+        <div class="framenavbar">
+            <img class="menurectangle-icon">
+            <img class="rectangle-icon-atas" alt="" src="../static/src/Rectangleatas.png">
+            <img class="framenavbar-item" alt="" src="../static/src/Rectangle5.png">
+            <div class="monitoring-system">Monitoring System</div>
+            <img class="tj-aqua-gro-1" alt="" src="../static/src/TJAQUAGRO1.png">
+            <div class="kotakdashboard">
+                <div class="dashboard1">Dashboard</div>
+            </div>
+            <div class="kotakhistory">
+                <div class="history">History</div>
+            </div>
+            <div class="kotakhid">
+                <div class="hidro">Hidro</div>
+            </div>
+            <div class="kotakaqua">
+                <div class="aqua">Aqua</div>
+            </div>
+        </div>
+    
+    
+        <div class="Frame-Utama">
+    
+            <!---------------------------//Frame Atas----------------------------  -->
+            <div class="frame-atas">
+                <div class="boxcondition">
+                    <div class="over-all-condition">Over All Condition</div>
+                    <div class="Kualitas" id="overall-quality-hidro"> </div>
+                    
+                </div>
+                
+                <div class="frame-atas-child"></div>
+                <div class="frame-atas-item"></div>
+                <div class="frame-atas-inner"></div>
+                <div class="pakcoy">Pakcoy</div>
+                <div class="brasica-rapa-l">Brasica rapa L</div>
+                <div class="nauli-f1-panah">Nauli F1 Panah Merah</div>
+                <img class="pakcoy2-1-icon" alt="Pakcoy" src="../static/src/Pakcoy2.png">
+                <div class="boxtracker"></div>
+                <div class="kotaktrac"></div>
+                <! ------------ TRACKER --------------- !>
+                <div class="crop-cycle-tracker">Crop Cycle Tracker</div>
+                <b class="harvest-time">Harvest Time</b>
+                <div class="rectangle-div">
+                    <div id="countdown" class="countdown"></div>
+
+                </div>
+            </div>
+            <!---------------------------FRAME UTAMA ----------------------------  -->
+            <div class="frame-tengah">
+                <div class="kotak" id="kotak">
+                    <div class="widget" id="widget">
+                        <div class="icon" id="icon"></div>
+                    </div>
+                </div>
+    
+                <div class="phmeter">
+                    <div id="myDiv"></div>
+                </div>
+    
+                <div class="boxTDSBawah">
+                    <div class="progress-container">
+                        <div id="progress-bar"></div>
+                    </div>
+                <p id="tds-status-text">Loading...</p> <!-- Updated ID -->
+                </div>
+    
+                <div class="chartdata">
+                    <div class="hist1-History">
+                        <div class="hist1-printbutton">
+                            <img class="hist1-printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        <div class="hist1-History">
+                            <button class="hist1-lightbutton" onclick="hist1ButtonClick('Light')">Light</button>
+                            <button class="hist1-tdsbutton" onclick="hist1ButtonClick('TDS')">TDS</button>
+                            <button class="hist1-phbutton" onclick="hist1ButtonClick('PH')">PH</button>
+                            <div class="hist1-controls">
+                                <label class="hist1-datefilter" for="hist1-dateFilter">Select Date</label>
+                                <input class="hist1-date-input" type="date" id="hist1-dateFilter">
+                                <br>
+                                <label class="hist1-rangeSlider" for="hist1-range-slider">Select Index Range</label>
+                                <div id="hist1-range-slider"></div>
+                                <br>
+                
+                                <div class="hist1-range-values">
+                                    <div class="hist1-start">Start: <span id="hist1-range-start-label">0</span></div>
+                                    <div class="hist1-end">End: <span id="hist1-range-end-label">10</span></div>
+                                </div>
+                
+                                <div id="hist1-chart-container">
+                                    <canvas id="hist1-lightChart"></canvas>
+                                    <canvas id="hist1-phChart"></canvas>
+                                    <canvas id="hist1-tdsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="chartcondition">
+                    <div class="ChartOver-History">
+                        <div class="ChartOver-printbutton">
+                            <img class="ChartOver-printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        <div class="ChartOver-controls">
+                            <label class="ChartOver-datefilter" for="ChartOver-dateFilter">Select Date</label>
+                            <input class="ChartOver-date-input" type="date" id="ChartOver-dateFilter">
+                            <br>
+                            <label class="ChartOver-rangeSlider" for="ChartOver-range-slider">Select Index Range</label>
+                            <div id="ChartOver-range-slider"></div>
+                            <br>
+                
+                            <div class="ChartOver-range-values">
+                                <div class="ChartOver-start">Start: <span id="ChartOver-range-start-label">0</span></div>
+                                <div class="ChartOver-end">End: <span id="ChartOver-range-end-label">10</span></div>
+                            </div>
+                        </div>
+                        <div id="ChartOver-chart-container">
+                            <canvas id="ChartOver-qualityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+    </div>
+    <!---------------------------FRAME NAVBAR ----------------------------  -->
+    
+    <script src="../static/Js/scripthidro.js"></script>
+    <script src="../static/Js/HistoryHidroponic.js"></script>
+    <script src="../static/Js/ScriptOver.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".dashboard1");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "dashboard";
+    });
+});
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".aqua");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "aquaponic";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".kotakhistory");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "tampilan";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const kotakhid = document.querySelector(".kotakhistory");
+    kotakhid.addEventListener("click", function() {
+        window.location.href = "tampilan";
+    });
+});
+
+    </script>
+</body>
+</html>

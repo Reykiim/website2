@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../static/css/MenuAqua.css" />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Semi Condensed:wght@500;600;700;800&display=swap" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div class="dashboard">
+        <div class="framenavbar">
+            <img class="menurectangle-icon">
+            <img class="rectangle-icon-atas" alt="" src="../static/src/Rectangleatas.png">
+            <img class="framenavbar-item" alt="" src="../static/src/Rectangle5.png">
+            <div class="monitoring-system">Monitoring System</div>
+            <img class="tj-aqua-gro-1" alt="" src="../static/src/TJAQUAGRO1.png">
+            <div class="kotakdashboard">
+                <div class="dashboard1">Dashboard</div>
+            </div>
+            <div class="kotakhistory">
+                <div class="history">History</div>
+            </div>
+            <div class="kotakhid">
+                <div class="hidro">Hidro</div>
+            </div>
+            <div class="kotakaqua">
+                <div class="aqua">Aqua</div>
+            </div>
+        </div>
+    
+        <div class="Frame-Utama">
+            <!---------------------------//Frame Atas----------------------------  -->
+            <div class="frame-atas">
+                <div class="boxcondition">
+                    <div class="over-all-condition">Over All Condition</div>
+                    <div class="KualitasAqua" id="overall-quality-aqua"></div>
+                </div>
+                
+                <div class="frame-atas-child"></div>
+                <div class="frame-atas-item"></div>
+                <div class="frame-atas-inner"></div>
+                <div class="pakcoy">Iridescent Shark</div>
+                <div class="brasica-rapa-l">Actinopterygii</div>
+                <div class="latin">Pangasianodon hypophthalmus</div>
+                <img class="patin-icon" alt="Patin" src="../static/src/Patin.png">
+                <div class="boxtracker"></div>
+                <div class="kotaktrac"></div>
+                <! ------------ TRACKER --------------- !>
+                <div class="crop-cycle-tracker">Crop Cycle Tracker</div>
+                <b class="date-planted">Harvest Time </b>
+                
+                <div class="rectangle-div">
+                    <div id="countdown" class="countdown"></div>
+                </div>
+            </div>
+
+            <!---------------------------FRAME UTAMA ----------------------------  -->
+            <div class="frame-tengah">
+                <div class="kotak" id="kotak">
+                    <div id="frame">
+                        <div id="wave"></div>
+                    </div>
+                    <div id="num">50%</div>
+                </div>
+    
+                <div class="phmeter">
+                    <div id="myDiv"></div>
+                </div>
+    
+                <div class="boxTDSBawah">
+                    <div class="traffic-light" id="traffic-light">
+                        <div class="light" id="green-light"></div>
+                        <div class="light" id="yellow-light"></div>
+                        <div class="light" id="red-light"></div>
+                    </div>
+                    <p id="turbidity-status-text">Loading...</p> <!-- Updated ID -->
+                </div>
+                <img class="pump" alt="Patin" src="../static/src/Waterpump.png">
+                <div class="BoxOnOF">
+                    <button id="toggle-button" class="toggle-button">OFF</button>
+                    <div id="statusOnOf" class="statusOnOf">Pump OFF</div>
+                </div>
+    
+                <div class="chartdata">
+                    <div class="History">
+                        <div class="printbutton">
+                            <img class="printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        
+                        
+                        <button class="turbiditybutton" onclick="buttonClick('Turbidity')">Turbidity</button>
+                        <button class="waterbutton" onclick="buttonClick('Water')">Water Level</button>
+                        <button class="phbutton" onclick="buttonClick('PH')">PH</button>
+                
+                        <div class="controls">
+                            <label class="datefilter" for="dateFilter">Select Date</label>
+                            <input class="date-input" type="date" id="dateFilter">
+                            <br>
+                            <label class="rangeSlider" for="range-slider">Select Index Range</label>
+                            <div id="range-slider"></div>
+                            <br>
+                
+                            <div class="range-values">
+                                <div class="start">Start: <span id="range-start-label">0</span></div>
+                                <div class="end">End: <span id="range-end-label">10</span></div>
+                            </div>
+                
+                            <div id="chart-container">
+                                <canvas id="turbidityChart"></canvas>
+                                <canvas id="phChart"></canvas>
+                                <canvas id="waterChart"></canvas>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+                <div class="AquaChartOver-condition">
+                    <div class="AquaChartOver-History">
+                        <div class="AquaChartOver-printbutton">
+                            <img class="AquaChartOver-printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        <div class="AquaChartOver-controls">
+                            <label class="AquaChartOver-datefilter" for="AquaChartOver-dateFilter">Select Date</label>
+                            <input class="AquaChartOver-date-input" type="date" id="AquaChartOver-dateFilter">
+                            <br>
+                            <label class="AquaChartOver-rangeSlider" for="AquaChartOver-range-slider">Select Index Range</label>
+                            <div id="AquaChartOver-range-slider"></div>
+                            <br>
+                
+                            <div class="AquaChartOver-range-values">
+                                <div class="AquaChartOver-start">Start: <span id="AquaChartOver-range-start-label">0</span></div>
+                                <div class="AquaChartOver-end">End: <span id="AquaChartOver-range-end-label">10</span></div>
+                            </div>
+                            <div id="AquaChartOver-chart-container">
+                                <canvas id="AquaChartOver-qualityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <script src="../static/Js/HistoryAquaponic.js"></script>
+    <script src="../static/Js/ScriptOverAkua.js"></script>
+    <script src="../static/Js/scriptwidget.js"></script>
+    <script src="../static/Js/scriptaqua.js"></script>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".dashboard1");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "dashboard";
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".kotakhid");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "hidroponic";
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".kotakhistory");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "tampilan";
+            });
+        });
+    </script>
+</body>
+</html>

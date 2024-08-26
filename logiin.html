@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../static/css/logiin.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Acme:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" />
+</head>
+<body>
+    <div class="login-parent">
+        <img class="icon" alt="" src="../static/src/Graphlogin.png">
+        <img class="logo-1-icon" alt="" src="../static/src/Logo.png">
+        <button class="menu-button home" id="home">Home</button>
+        <div class="frame1">
+            <div class="welcome-parent">
+                <div class="welcome">Welcome</div>
+                <div class="frame-child"></div>
+                <div class="frame-item"></div>
+                <div id="errorMessage"></div>
+                <form id="loginForm">
+                    <button type="submit" class="login1">Login</button>
+                    <div class="email-label">Email</div>
+                    <input id="email" name="email" class="input-field-email" placeholder="Enter Email" required>
+                        
+                    <div class="password-label">Password</div>
+                    <input id="password" name="password" class="input-field-password" placeholder="Enter Password" required>
+                </form>
+                <div class="dont-have-an-account-parent">
+                    <div class="dont-have-an">Don’t have an Account?</div>
+                    <div class="sign-up">
+                        <b class="sign-up1" id="signupButton">Sign Up</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Use Firebase Authentication REST API to sign in
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/dashboard'; // Redirect to dashboard on success
+                } else {
+                    document.getElementById('errorMessage').textContent = data.message; // Show error message
+                }
+            })
+            .catch(error => {
+                document.getElementById('errorMessage').textContent = 'An error occurred. Please try again.';
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('home').addEventListener('click', function() {
+            window.location.href = "{{ url_for('home') }}";
+        });
+
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = "{{ url_for('signup') }}";
+        });
+    </script>
+
+</body>
+</html>

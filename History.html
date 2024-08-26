@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../static/css/History.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+</head>
+<body>
+    <div class="dashboard">
+        <div class="framenavbar">
+            <img class="menurectangle-icon">
+            <img class="rectangle-icon-atas" alt="" src="../static/src/Rectangleatas.png">
+            <img class="framenavbar-item" alt="" src="../static/src/Rectangle5.png">
+            <div class="monitoring-system">Monitoring System</div>
+            <img class="tj-aqua-gro-1" alt="" src="../static/src/TJAQUAGRO1.png">
+            <div class="kotakdashboard">
+                <div class="dashboard1">Dashboard</div>
+            </div>
+            <div class="kotakhistory">
+                <div class="history">History</div>
+            </div>
+            <div class="kotakhid">
+                <div class="hidro">Hidro</div>
+            </div>
+            <div class="kotakaqua">
+                <div class="aqua">Aqua</div>
+            </div>
+        </div>
+    
+        <div class="Frame-Utama">
+            <!---------------------------//Frame Atas----------------------------  -->
+            <div class="frame-atas">                
+                <div class="frame-atas-child"></div>
+                <div class="frame-atas-item"></div>
+                <div class="frame-atas-inner"></div>
+                <div class="patin">Iridescent Shark</div>
+                <div class="brasica-rapa-l">Actinopterygii</div>
+                <div class="latin">Pangasianodon hypophthalmus</div>
+                <img class="patin-icon" alt="Patin" src="../static/src/Patin.png">
+
+                <div class="frame-atas1-child"></div>
+                <div class="frame-atas1-item"></div>
+                <div class="frame-atas1-inner"></div>
+                <div class="pakcoy">Pakcoy</div>
+                <div class="brasica-rapa1-l">Brasica rapa L</div>
+                <div class="nauli-f1-panah">Nauli F1 Panah Merah</div>
+                <img class="pakcoy2-1-icon" alt="Pakcoy" src="../static/src/Pakcoy2.png">
+                
+            </div>
+
+            <!---------------------------FRAME UTAMA ----------------------------  -->
+            <div class="frame-tengah">
+                
+                <div class="chartdataAqua">
+                    <div class="History">
+                        <div class="printbutton">
+                            <img class="printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        
+                        
+                        <button class="turbiditybutton" onclick="buttonClick('Turbidity')">Turbidity</button>
+                        <button class="waterbutton" onclick="buttonClick('Water')">Water Level</button>
+                        <button class="phbutton" onclick="buttonClick('PH')">PH</button>
+                
+                        <div class="controls">
+                            <label class="datefilter" for="dateFilter">Select Date</label>
+                            <input class="date-input" type="date" id="dateFilter">
+                            <br>
+                            <label class="rangeSlider" for="range-slider">Select Index Range</label>
+                            <div id="range-slider"></div>
+                            <br>
+                
+                            <div class="range-values">
+                                <div class="start">Start: <span id="range-start-label">0</span></div>
+                                <div class="end">End: <span id="range-end-label">10</span></div>
+                            </div>
+                
+                            <div id="chart-container">
+                                <canvas id="turbidityChart"></canvas>
+                                <canvas id="phChart"></canvas>
+                                <canvas id="waterChart"></canvas>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+
+                <div class="chartdataHidro">
+                    <div class="hist1-History">
+                        <div class="hist1-printbutton">
+                            <img class="hist1-printer-1041985-1-icon" alt="" src="../static/src/printer.png">
+                        </div>
+                        <div class="hist1-History">
+                            <button class="hist1-lightbutton" onclick="hist1ButtonClick('Light')">Light</button>
+                            <button class="hist1-tdsbutton" onclick="hist1ButtonClick('TDS')">TDS</button>
+                            <button class="hist1-phbutton" onclick="hist1ButtonClick('PH')">PH</button>
+                            <div class="hist1-controls">
+                                <label class="hist1-datefilter" for="hist1-dateFilter">Select Date</label>
+                                <input class="hist1-date-input" type="date" id="hist1-dateFilter">
+                                <br>
+                                <label class="hist1-rangeSlider" for="hist1-range-slider">Select Index Range</label>
+                                <div id="hist1-range-slider"></div>
+                                <br>
+                
+                                <div class="hist1-range-values">
+                                    <div class="hist1-start">Start: <span id="hist1-range-start-label">0</span></div>
+                                    <div class="hist1-end">End: <span id="hist1-range-end-label">10</span></div>
+                                </div>
+                
+                                <div id="hist1-chart-container">
+                                    <canvas id="hist1-lightChart"></canvas>
+                                    <canvas id="hist1-phChart"></canvas>
+                                    <canvas id="hist1-tdsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chartdataHistory">
+                    <h1>Data Sensor</h1>
+                    <div class="filter-container">
+                        <label for="filter-date">Filter by date:</label>
+                        <input type="date" id="filter-date" name="filter-date">
+                        <label for="sensor-type">Filter by sensor type:</label>
+                        <select id="sensor-type" name="sensor-type">
+                            <option value="all">All</option>
+                            <option value="PH">PH</option>
+                            <option value="Turbidity">Turbidity</option>
+                            <option value="Ultrasonic">Ultrasonic</option>
+                            <option value="Light">Light</option>
+                            <option value="TDS">TDS</option>
+                            <option value="HydroQuality">HydroQuality</option>
+                            <option value="AquaQuality">AquaQuality</option>
+                        </select>
+                    </div>
+                    <div class = "table-container" id="sensor-data">
+                        <table>
+                            <thead id="table-header">
+                                <!-- Header akan ditambahkan di sini menggunakan JavaScript -->
+                            </thead>
+                            <tbody id="data-table-body">
+                                <!-- Data akan ditambahkan di sini menggunakan JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".dashboard1");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "dashboard";
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".kotakhid");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "hidroponic";
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".kotakhistory");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "tampilan";
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            const kotakhid = document.querySelector(".aqua");
+            kotakhid.addEventListener("click", function() {
+                window.location.href = "aquaponic";
+            });
+        });
+
+        
+        const sensorTypes = ["PH", "Turbidity", "Ultrasonic", "Light", "TDS", "HydroQuality", "AquaQuality"];
+
+        function createTableHeader(selectedType) {
+            const tableHeader = document.getElementById('table-header');
+            tableHeader.innerHTML = '';
+            const row = document.createElement('tr');
+            const timestampHeader = document.createElement('th');
+            timestampHeader.innerText = 'Timestamp';
+            row.appendChild(timestampHeader);
+            
+            if (selectedType === 'all') {
+                sensorTypes.forEach(type => {
+                    const th = document.createElement('th');
+                    th.innerText = type;
+                    row.appendChild(th);
+                });
+            } else {
+                const th = document.createElement('th');
+                th.innerText = selectedType;
+                row.appendChild(th);
+            }
+            
+            tableHeader.appendChild(row);
+        }
+
+        async function fetchSensorData(date = null) {
+            try {
+                let url = '/get-sensor-data';
+                if (date) {
+                    url += `?date=${date}`;
+                }
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const selectedType = document.getElementById('sensor-type').value;
+                createTableHeader(selectedType);
+
+                const tableBody = document.getElementById('data-table-body');
+                tableBody.innerHTML = ''; // Kosongkan tabel sebelum menambahkan data
+
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${item.timestamp}</td>`;
+                    
+                    if (selectedType === 'all') {
+                        sensorTypes.forEach(type => {
+                            row.innerHTML += `<td>${item[type]}</td>`;
+                        });
+                    } else {
+                        row.innerHTML += `<td>${item[selectedType]}</td>`;
+                    }
+                    
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching sensor data:', error);
+            }
+        }
+
+        const tableContainer = document.querySelector('.table-container');
+        tableContainer.scrollTop = 0; // Reset scroll position after table update
+
+
+        document.getElementById('filter-date').addEventListener('change', (event) => {
+            const selectedDate = event.target.value;
+            fetchSensorData(selectedDate);
+        });
+
+        document.getElementById('sensor-type').addEventListener('change', () => {
+            fetchSensorData(document.getElementById('filter-date').value);
+        });
+
+        // Panggil fungsi untuk mengambil data saat halaman dimuat
+        window.onload = () => fetchSensorData();
+    </script>
+    <script src="../static/Js/HistoryAquaponic.js"></script>
+    <script src="../static/Js/HistoryHidroponic.js"></script>
+</body>
+</html>

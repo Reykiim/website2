@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="../static/css/signupp.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Acme:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" />
+</head>
+<body>
+    <div class="singup" id="singupContainer">
+        <img class="logo-1-icon" alt="" src="../static/src/Logo.png">
+        <img class="icon" alt="" src="../static/src/Graphsignup.png">
+        <button class="menu-button home" id="home">Home</button>
+        <div class="frame1">
+            <div class="create-account-parent">
+                <div class="create-account">Create Account</div>
+                <div class="frame-child"></div>
+                <div class="frame-item"></div>
+            
+                <div class="already-have-an-account-parent">
+                    <div class="already-have-an">Already have an Account!</div>
+                    <div class="sign-up">
+                        <b class="sign-up1" id="loginButton">Login</b>
+                    </div>
+                </div>
+                <form method="post" action="/signup">
+                    <div class="component-1" id="emailComponent">
+                        <div class="component-1-child"></div>
+                        <div class="email email-label">Email</div>
+                        <input type="text" id="emailInput" name="email" class="input-field" placeholder="Enter Email" required>
+                    </div>
+                    <div class="frame-inner"></div>
+                    <div class="component-3" id="usernameComponent">
+                        <div class="component-1-child"></div>
+                        <div class="email username-label">Username</div>
+                        <input type="text" id="usernameInput" name="username" class="input-field" placeholder="Enter Username" required>
+                    </div>
+                    <div class="component-2" id="passwordComponent">
+                        <div class="component-1-child"></div>
+                        <div class="email password-label">Password</div>
+                        <input type="password" id="passwordInput" name="password" class="input-field" placeholder="Enter Password" required>
+                    </div>
+                    <button class="tombolcreate" id="signupButton" type="submit">Create Account</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('emailComponent').addEventListener('click', function() {
+            document.getElementById('emailInput').classList.add('show-input');
+            document.querySelector('#emailComponent .email-label').classList.add('active');
+            document.getElementById('emailInput').focus();
+        });
+
+        document.getElementById('passwordComponent').addEventListener('click', function() {
+            document.getElementById('passwordInput').classList.add('show-input');
+            document.querySelector('#passwordComponent .password-label').classList.add('active');
+            document.getElementById('passwordInput').focus();
+        });
+
+        document.getElementById('usernameComponent').addEventListener('click', function() {
+            document.getElementById('usernameInput').classList.add('show-input');
+            document.querySelector('#usernameComponent .username-label').classList.add('active');
+            document.getElementById('usernameInput').focus();
+        });
+
+        document.getElementById('emailInput').addEventListener('blur', function() {
+            if (this.value === '') {
+                this.classList.remove('show-input');
+                document.querySelector('#emailComponent .email-label').classList.remove('active');
+            }
+        });
+
+        document.getElementById('usernameInput').addEventListener('blur', function() {
+            if (this.value === '') {
+                this.classList.remove('show-input');
+                document.querySelector('#usernameComponent .username-label').classList.remove('active');
+            }
+        });
+
+        document.getElementById('passwordInput').addEventListener('blur', function() {
+            if (this.value === '') {
+                this.classList.remove('show-input');
+                document.querySelector('#passwordComponent .password-label').classList.remove('active');
+            }
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = "{{ url_for('login') }}";
+        });
+
+
+        document.getElementById('home').addEventListener('click', function() {
+            window.location.href = "{{ url_for('home') }}";
+        });
+    
+    
+        
+    </script>
+</body>
+</html>
